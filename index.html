@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Omar Amer Hashem Mohamed — Full Stack Portfolio</title>
+  <meta name="description" content="Modern portfolio with vivid gradient, animated profile picture, skill showcase, and interactive social icons." />
+
+  <!-- AOS + Font Awesome -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+
+  <style>
+    :root{
+      --bg1:#0b1636; --bg2:#0f2f6e; --bg3:#5a1d7a; --bg4:#c04848;
+      --panel:rgba(255,255,255,0.06);
+      --text:#e9f2ff; --muted:#b6c7e6; --accent:#00b4ff; --radius:14px; --max:1200px;
+    }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{
+      margin:0;color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      background:linear-gradient(-45deg,var(--bg1),var(--bg2),var(--bg3),var(--bg4));
+      background-size:400% 400%; animation:gradMove 16s ease infinite;
+    }
+    @keyframes gradMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+    a{text-decoration:none;color:inherit}
+    .container{max-width:var(--max);margin:0 auto;padding:24px}
+
+    /* Top Nav */
+    nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+    nav .brand{font-weight:800;letter-spacing:.3px;display:flex;align-items:center;gap:15px}
+    nav .links{display:flex;gap:14px}
+    nav .links a{color:var(--muted);transition:transform .2s}
+    nav .links a:hover{transform:scale(1.1)}
+
+    /* Chip */
+    .chip{display:inline-flex;align-items:center;gap:8px;background:var(--panel);padding:8px 12px;border-radius:999px;color:#e1ecff;border:1px solid rgba(255,255,255,0.12)}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center;margin-top:18px}
+    @media(max-width:980px){.hero{grid-template-columns:1fr;text-align:center}}
+    h1{font-size:48px;line-height:1.05;margin:0}
+    .accent{background:linear-gradient(90deg,#65e0ff,#a27cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .subtitle{color:var(--muted);margin-top:10px}
+    .hero-actions{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap;justify-content:center}
+    .btn{background:#65e0ff;color:#00131f;border:none;border-radius:10px;padding:10px 14px;font-weight:800;cursor:pointer;transition:transform .2s}
+    .btn:hover{transform:scale(1.08)}
+    .btn.secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.18)}
+    .btn.whatsapp{background:#25D366;color:#001a0c}
+    .btn.block{display:inline-flex;align-items:center;gap:8px}
+
+    .btn.certificate {
+      background: linear-gradient(90deg, #7c61c0, #a30a73);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 14px;
+      cursor: pointer;
+    }
+    .btn.certificate:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 12px rgba(176, 1, 120, 0.6);
+    }
+
+    /* Portrait */
+    .portraitWrap{position:relative;perspective:1000px;display:flex;justify-content:center}
+    .portrait{
+      width:280px;height:280px;max-width:100%;
+      border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,0.18);
+      background:radial-gradient(120% 120% at 10% 10%,rgba(255,255,255,0.10),transparent);
+      transform-style:preserve-3d;will-change:transform, box-shadow;
+      transition:transform .15s ease, box-shadow .2s ease;
+      box-shadow:0 10px 20px rgba(0,0,0,0.4);
+    }
+    .portrait img{width:100%;height:100%;object-fit:cover;display:block}
+
+    /* Shake + Zoom on hover for icons/projects */
+    .socials a, .projects-list .card{
+      transition:transform 0.25s, box-shadow 0.25s;
+    }
+    .socials a:hover, .projects-list .card:hover{
+      transform:scale(1.08) rotate(2deg);
+      box-shadow:0 0 15px currentColor;
+    }
+
+    /* Sections */
+    section{margin-top:40px}
+    .card{
+      background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03));
+      border:1px solid rgba(255,255,255,0.16); border-radius:16px; padding:18px;
+    }
+    h2{margin:0 0 10px}
+
+    /* Skills */
+    .skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;justify-content:center}
+    .skill{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);font-weight:700;color:#f2f6ff;transition:transform .2s}
+    .skill:hover{transform:scale(1.1)}
+
+    /* Projects */
+    .projects-list{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    @media(max-width:860px){.projects-list{grid-template-columns:1fr}}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px}
+    @media(max-width:980px){.contact-grid{grid-template-columns:1fr}}
+    .socials{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px}
+    .ico{font-size:22px}
+    .fb{color:#1877F2}.ig{color:#E4405F}.in{color:#0A66C2}.gh{color:#181717}.vercel{color:#000;background:#fff}.wa{color:#25D366}
+
+    footer{margin:36px 0 12px;text-align:center;color:#d0dbf2}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <div class="brand">
+        <div class="portrait" id="portrait"><img src="assets/me.png" alt="Omar"></div>
+        Omar Amer Hashem Mohamed
+      </div>
+      <div class="links">
+        <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a>
+        <a href="#projects">Projects</a><a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="home" class="hero" data-aos="fade-down" data-aos-duration="1200" data-aos-easing="ease-in-out">
+      <div>
+        <span class="chip"><i class="fa-solid fa-circle fa-2xs" style="color:#2aff95"></i> Open to Remote Work</span>
+        <h1>Hi, I’m <span class="accent">Omar Amer</span></h1>
+        <p class="subtitle">Full-Stack Developer from <strong>Assiut, Egypt</strong>. I build fast, reliable products with clean UI & robust backends.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn whatsapp block" href="https://wa.me/201010063920" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+          </a>
+          <a class="btn certificate" href="assets/CV.pdf" target="_blank">
+            <i class="fa-solid fa-certificate"></i> Certificate
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" data-aos="fade-up" data-aos-duration="1200" data-aos-easing="ease-in-out">
+      <div class="card">
+        <h2>About Me</h2>
+        <p>I’m <strong>Omar Amer Hashem Mohamed</strong>,a highly skilled Senior <strong>Full Stack Developer</strong>  deep expertise in designing and developing end-to-end web applications. With a strong foundation in <strong>HTML, CSS, JavaScript, PHP, MySQL, React</strong> and more.</p>
+        <p>I specialize in building scalable, secure, and high-performance systems that deliver exceptional user experiences.
+
+Over the years, I have led projects from concept to deployment, working closely with cross-functional teams to ensure both frontend elegance and backend robustness. My approach combines clean, maintainable code with a keen eye for UI/UX detail, ensuring that products are both beautiful and reliable.
+
+I am passionate about staying up-to-date with emerging technologies, applying best practices in security, and optimizing applications for speed and scalability. From building interactive dashboards to architecting database-driven platforms, I ensure every project meets industry standards and exceeds client expectations.
+
+Currently, ready to contribute my skills to ambitious projects that demand innovation, precision, and results. <strong>Remote Work</strong> opportunities worldwide.</p>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" data-aos="fade-up" data-aos-duration="1200" data-aos-easing="ease-in-out">
+      <h2>Skills</h2>
+      <div class="skills">
+        <div class="skill">🔶 HTML5</div>
+        <div class="skill">🎨 CSS3</div>
+        <div class="skill">⚡ JavaScript</div>
+        <div class="skill">⚛️ React</div>
+        <div class="skill">🐘 PHP</div>
+        <div class="skill">🗄️ MySQL</div>
+        <div class="skill">🚀 Vercel</div>
+        <div class="skill">📱 Responsive Design</div>
+        <div class="skill">🔐 Security Basics</div>
+        <div class="skill">🧰 Git & GitHub</div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" data-aos="fade-up" data-aos-duration="1200" data-aos-easing="ease-in-out">
+      <h2>Projects</h2>
+      <div class="projects-list">
+        <div class="card" data-aos="zoom-in" data-aos-duration="1000">
+          <h3>Candy Store</h3>
+          <p>Simple e-commerce front showcasing layout, components and interactivity.</p>
+          <p><a href="https://candyy-store.vercel.app/" target="_blank">Visit Project</a></p>
+        </div>
+        <div class="card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
+          <h3>Kanban Task Board</h3>
+          <p>Drag-n-drop columns, local persistence and keyboard shortcuts.</p>
+          <p><a href="#">View Project</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" data-aos="fade-up" data-aos-duration="1200" data-aos-easing="ease-in-out">
+      <h2>Contact</h2>
+      <div class="contact-grid">
+        <div class="card">
+          <p><i class="fa-solid fa-envelope"></i> <a href="mailto:oamer4778@gmail.com">oamer4778@gmail.com</a></p>
+          <p><i class="fa-solid fa-phone"></i> <a href="tel:+201010063920">+20 1010063920</a></p>
+          <p><i class="fa-solid fa-location-dot"></i> Assiut, Egypt</p>
+        </div>
+        <div class="card">
+          <h3>Social Profiles</h3>
+          <div class="socials">
+            <a class="fb" href="https://www.facebook.com/omer.amer.81145" target="_blank"><i class="fa-brands fa-facebook-f ico"></i></a>
+            <a class="wa" href="https://wa.me/201010063920" target="_blank"><i class="fa-brands fa-whatsapp ico"></i></a>
+            <a class="ig" href="https://www.instagram.com/omar_amer95/" target="_blank"><i class="fa-brands fa-instagram ico"></i></a>
+            <a class="ig" href="https://www.instagram.com/eng_omar_amer20/" target="_blank"><i class="fa-brands fa-instagram ico"></i></a>
+            <a class="in" href="https://www.linkedin.com/in/omer-amer-1b8624334" target="_blank"><i class="fa-brands fa-linkedin-in ico"></i></a>
+            <a class="gh" href="https://github.com/omaramer16" target="_blank"><i class="fa-brands fa-github ico"></i></a>
+            <a class="vercel" href="https://vercel.com/omar-amers-projects" target="_blank"><svg class="ico" width="22" height="22" viewBox="0 0 24 24"><path d="M12 3l10 18H2z" fill="#000"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>© <span id="year"></span> Omar Amer Hashem Mohamed</footer>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    AOS.init({
+      once: true,
+      offset: 120,
+      duration: 1000,
+      easing: 'ease-in-out',
+    });
+
+    // Portrait Parallax + Zoom
+    const portrait = document.getElementById('portrait');
+    let rect;
+    portrait.addEventListener('mousemove', e => {
+      if(!rect) rect = portrait.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - .5;
+      const y = (e.clientY - rect.top) / rect.height - .5;
+      portrait.style.transform = `rotateX(${y * -10}deg) rotateY(${x * 10}deg) scale(1.05)`;
+    });
+    portrait.addEventListener('mouseleave', () => {
+      portrait.style.transform = 'rotateX(0) rotateY(0) scale(1)';
+      rect = null;
+    });
+  </script>
+</body>
+</html>
