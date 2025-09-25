@@ -1,0 +1,59 @@
+:root{--radius:14px;--max:1200px;}
+*{box-sizing:border-box;} html,body{height:100%;margin:0;font-family:Inter,system-ui,sans-serif;}
+
+/* GIF Background */
+.gif-bg{position:fixed;top:0;left:0;width:100%;height:100%;overflow:hidden;z-index:-2;}
+.gif-bg img{width:100%;height:100%;object-fit:cover;}
+.bg-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(167, 13, 13, 0.35);z-index:-1;}
+
+/* Container */
+.container{max-width:var(--max);margin:0 auto;padding:24px;position:relative; z-index:1}
+
+/* Gradient text for headings and buttons */
+h1,h2,h3,.accent,.skill,.chip,.btn{
+  background:linear-gradient(90deg,#a27cff,#c04848,#65e0ff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color: initial;
+  color: transparent;
+  text-shadow: 0 0 6px rgba(233, 12, 12, 0.7);
+  transition: all .3s;
+}
+
+/* Cards */
+.card{background:#970667;color:#f71818;border-radius:16px;padding:18px;transition:all .3s;box-shadow:0 4px 12px rgba(0,0,0,0.15);}
+.card:hover{transform:scale(1.08) rotate(-2deg);}
+
+/* Nav */
+nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0;flex-wrap:wrap}
+nav .links{display:flex;gap:14px;flex-wrap:wrap}
+nav .links a{color:#9c0981;transition:all .2s;}
+nav .links a:hover{transform:scale(1.1) rotate(-2deg);}
+
+/* Portrait */
+.portraitWrap{position:relative;perspective:1000px;display:flex;justify-content:center}
+.portrait{width:280px;height:280px;border-radius:50%;overflow:hidden;border:3px solid rgba(0,0,0,0.2);transform-style:preserve-3d;transition:transform .15s ease, box-shadow .2s ease;box-shadow:0 10px 20px rgba(0,0,0,0.4);}
+.portrait img{width:100%;height:100%;object-fit:cover;}
+
+/* Skills */
+.skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;justify-content:center}
+.skill:hover{transform:scale(1.1) rotate(-2deg);text-shadow:0 0 6px rgba(0,0,0,0.2);}
+
+/* Projects */
+.projects-list{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+@media(max-width:860px){.projects-list{grid-template-columns:1fr}}
+
+/* Contact / Socials */
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px}
+@media(max-width:980px){.contact-grid{grid-template-columns:1fr}}
+.socials{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px}
+.socials a:hover{transform:scale(1.1) rotate(-2deg);text-shadow:0 0 6px rgba(0,0,0,0.3);}
+.ico{font-size:22px}
+
+/* Buttons */
+.btn{background:transparent;border:none;padding:10px 14px;font-weight:800;cursor:pointer;border-radius:10px;display:inline-flex;align-items:center;gap:8px;transition:all .3s;}
+.btn:hover{transform:scale(1.08) rotate(-2deg);}
+.btn.whatsapp{background:#25D366;color:#fff;}
+.btn.certificate{background:#7c61c0;color:#fff;}
+
+/* Footer */
+footer{margin:36px 0 12px;text-align:center;color:#d41166;}

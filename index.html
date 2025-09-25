@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Omar Amer Hashem Mohamed — Full Stack Portfolio</title>
-  <meta name="description" content="Modern portfolio with vivid gradient, animated profile picture, skill showcase, and interactive social icons." />
+  <title>Omar Amer Hashem Mohamed — Senior Full Stack Developer</title>
+  <meta name="description" content="Senior Full Stack Developer — Omar Amer. Portfolio with parallax portrait, rich skills, projects, and interactive socials." />
 
   <!-- AOS + Font Awesome -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
@@ -13,235 +13,462 @@
   <style>
     :root{
       --bg1:#0b1636; --bg2:#0f2f6e; --bg3:#5a1d7a; --bg4:#c04848;
-      --panel:rgba(255,255,255,0.06);
-      --text:#e9f2ff; --muted:#b6c7e6; --accent:#00b4ff; --radius:14px; --max:1200px;
+      --text:#e9f2ff; --muted:#b6c7e6; --card:rgba(255,255,255,0.06);
+      --line:rgba(255,255,255,0.18); --accent:#00b4ff; --radius:14px;
+      --max:1200px;
     }
-    *{box-sizing:border-box} html,body{height:100%}
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
     body{
-      margin:0;color:var(--text);font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
+      margin:0; color:var(--text);
+      font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;
       background:linear-gradient(-45deg,var(--bg1),var(--bg2),var(--bg3),var(--bg4));
       background-size:400% 400%; animation:gradMove 16s ease infinite;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
     }
-    @keyframes gradMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
-    a{text-decoration:none;color:inherit}
+    @keyframes gradMove{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+
+    a{color:inherit;text-decoration:none}
     .container{max-width:var(--max);margin:0 auto;padding:24px}
 
-    /* Top Nav */
-    nav{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
-    nav .brand{font-weight:800;letter-spacing:.3px;display:flex;align-items:center;gap:15px}
-    nav .links{display:flex;gap:14px}
-    nav .links a{color:var(--muted);transition:transform .2s}
-    nav .links a:hover{transform:scale(1.1)}
+    /* NAV */
+    nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 0}
+    .brand-row{display:flex;align-items:center;gap:12px}
+    .brand-name{font-weight:800;letter-spacing:.3px}
+    .nav-links{display:flex;gap:12px;flex-wrap:wrap}
+    .nav-links a{color:var(--muted);padding:6px;border-radius:8px;transition:transform .18s, background .18s}
+    .nav-links a:focus, .nav-links a:hover{transform:translateY(-3px); background:rgba(255,255,255,0.02)}
 
-    /* Chip */
-    .chip{display:inline-flex;align-items:center;gap:8px;background:var(--panel);padding:8px 12px;border-radius:999px;color:#e1ecff;border:1px solid rgba(255,255,255,0.12)}
-
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:center;margin-top:18px}
-    @media(max-width:980px){.hero{grid-template-columns:1fr;text-align:center}}
-    h1{font-size:48px;line-height:1.05;margin:0}
+    /* HERO */
+    .hero{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+    .hero-left{flex:1;min-width:260px}
+    .hero-right{width:320px;display:flex;justify-content:center}
+    .hero-row{display:flex;align-items:center;gap:14px}
+    h1{margin:0;font-size:2.4rem;line-height:1.02}
     .accent{background:linear-gradient(90deg,#65e0ff,#a27cff);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .subtitle{color:var(--muted);margin-top:10px}
-    .hero-actions{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap;justify-content:center}
-    .btn{background:#65e0ff;color:#00131f;border:none;border-radius:10px;padding:10px 14px;font-weight:800;cursor:pointer;transition:transform .2s}
-    .btn:hover{transform:scale(1.08)}
-    .btn.secondary{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.18)}
+    .subtitle{margin-top:10px;color:var(--muted);font-size:1rem}
+    .chip{display:inline-flex;align-items:center;gap:8px;background:var(--card);padding:8px 12px;border-radius:999px;color:#e8f5ff;border:1px solid var(--line)}
+
+    .hero-actions{display:flex;gap:12px;margin-top:16px;flex-wrap:wrap}
+    .btn{
+      padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:800;
+      transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .btn.primary{background:var(--accent);color:#00131a}
+    .btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
     .btn.whatsapp{background:#25D366;color:#001a0c}
-    .btn.block{display:inline-flex;align-items:center;gap:8px}
 
-    .btn.certificate {
-      background: linear-gradient(90deg, #7c61c0, #a30a73);
-      color: #fff;
-      border: none;
-      border-radius: 10px;
-      padding: 10px 14px;
-      cursor: pointer;
-    }
-    .btn.certificate:hover {
-      transform: scale(1.08);
-      box-shadow: 0 0 12px rgba(176, 1, 120, 0.6);
-    }
+    .btn:hover{transform:translateY(-4px); box-shadow:0 10px 30px rgba(0,0,0,0.35)}
 
-    /* Portrait */
-    .portraitWrap{position:relative;perspective:1000px;display:flex;justify-content:center}
+    /* PORTRAIT (circle + shadow + parallax) */
+    .portrait-wrap{position:relative;perspective:1200px;display:flex;justify-content:center;align-items:center}
     .portrait{
-      width:280px;height:280px;max-width:100%;
-      border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,0.18);
-      background:radial-gradient(120% 120% at 10% 10%,rgba(255,255,255,0.10),transparent);
-      transform-style:preserve-3d;will-change:transform, box-shadow;
-      transition:transform .15s ease, box-shadow .2s ease;
-      box-shadow:0 10px 20px rgba(0,0,0,0.4);
+      width:250px;height:250px;border-radius:50%;overflow:hidden;border:3px solid rgba(255,255,255,0.14);
+      background:radial-gradient(120% 120% at 10% 10%,rgba(255,255,255,0.06),transparent);
+      transition:transform .12s linear, box-shadow .12s linear;
+      will-change:transform, box-shadow;
+      box-shadow: 0 18px 40px rgba(10,12,20,0.55);
+      display:flex;align-items:center;justify-content:center;
     }
     .portrait img{width:100%;height:100%;object-fit:cover;display:block}
 
-    /* Shake + Zoom on hover for icons/projects */
-    .socials a, .projects-list .card{
-      transition:transform 0.25s, box-shadow 0.25s;
+    /* Add circular glow layer under portrait */
+    .portrait::after{
+      content:""; position:absolute; inset:auto; left:50%; transform:translateX(-50%);
+      bottom:-18px; width:260px; height:80px; border-radius:50%;
+      background: radial-gradient(closest-side, rgba(0,0,0,0.45), transparent 60%);
+      filter:blur(18px); pointer-events:none;
     }
-    .socials a:hover, .projects-list .card:hover{
-      transform:scale(1.08) rotate(2deg);
-      box-shadow:0 0 15px currentColor;
+
+    /* make portrait slightly smaller on very small screens */
+    @media (max-width:420px){
+      .portrait{width:180px;height:180px}
     }
 
-    /* Sections */
-    section{margin-top:40px}
-    .card{
-      background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03));
-      border:1px solid rgba(255,255,255,0.16); border-radius:16px; padding:18px;
+    /* SECTIONS */
+    section{margin-top:36px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+
+    h2{margin:0 0 12px}
+
+    /* SKILLS */
+    .skills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+    .skill{
+      display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;
+      background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); font-weight:700;
+      transition:transform .2s, box-shadow .2s;
     }
-    h2{margin:0 0 10px}
+    .skill:hover{transform:translateY(-6px) scale(1.03); box-shadow:0 10px 30px rgba(0,0,0,0.45)}
 
-    /* Skills */
-    .skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;justify-content:center}
-    .skill{display:flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);font-weight:700;color:#f2f6ff;transition:transform .2s}
-    .skill:hover{transform:scale(1.1)}
+    /* PROJECTS */
+    .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+    @media(max-width:900px){.projects-grid{grid-template-columns:1fr}}
+    .project{background:linear-gradient(180deg, rgba(255,255,255,0.03), transparent); padding:14px;border-radius:12px;border:1px solid var(--line)}
+    .project a{color:#dff7ff;text-decoration:underline;transition:transform .18s}
 
-    /* Projects */
-    .projects-list{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    @media(max-width:860px){.projects-list{grid-template-columns:1fr}}
+    /* SOCIAL ICONS (bigger + colored shadow on hover + shake) */
+    .socials{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px}
+    .socials a{
+      display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;background:rgba(255,255,255,0.04);
+      border:1px solid rgba(255,255,255,0.06); font-weight:800; color:var(--text);
+      transition:transform .18s, box-shadow .18s, filter .18s;
+      font-size:16px;
+    }
+    .socials a .ico{font-size:22px}
+    /* color classes */
+    .soc-fb{color:#1877F2}
+    .soc-ig{color:#E4405F}
+    .soc-in{color:#0A66C2}
+    .soc-gh{color:#181717}
+    .soc-wa{color:#25D366}
+    .soc-vercel{background:#fff;color:#000;padding:8px 10px}
 
-    /* Contact */
-    .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:18px}
-    @media(max-width:980px){.contact-grid{grid-template-columns:1fr}}
-    .socials{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px}
-    .ico{font-size:22px}
-    .fb{color:#1877F2}.ig{color:#E4405F}.in{color:#0A66C2}.gh{color:#181717}.vercel{color:#000;background:#fff}.wa{color:#25D366}
+    /* Hover effect: glow with same color + small shake */
+    .socials a:hover{
+      transform:translateY(-6px) scale(1.06) rotate(2deg);
+      filter:brightness(1.08);
+    }
+    /* shadow using current color (get computed color via JS fallback to CSS variable) */
+    .socials a:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.45), 0 0 18px currentColor; }
 
-    footer{margin:36px 0 12px;text-align:center;color:#d0dbf2}
+    /* small shake keyframes for a tiny pepper */
+    @keyframes tinyShake{
+      0%,100%{transform:translateX(0) rotate(2deg)}
+      25%{transform:translateX(-3px) rotate(2deg)}
+      50%{transform:translateX(3px) rotate(2deg)}
+      75%{transform:translateX(-2px) rotate(2deg)}
+    }
+    .socials a:active, .socials a:focus { outline:2px solid rgba(255,255,255,0.06) }
+
+    /* footer */
+    footer{text-align:center;margin:28px 0;color:var(--muted)}
+
+    /* responsive: keep portrait next to text on mobile — layout stacks but hero-row keeps them in one line */
+    @media(max-width:780px){
+      .hero{display:block}
+      .hero-row{display:flex;align-items:center;gap:12px;justify-content:center;margin-top:12px}
+      .hero-right{display:flex;justify-content:center;margin-top:10px}
+    }
+    /* reduce motion accessibility */
+    @media (prefers-reduced-motion: reduce){
+      *{animation:none !important; transition:none !important}
+    }
   </style>
 </head>
 <body>
   <div class="container">
+    <!-- NAV -->
     <nav>
-      <div class="brand">
-        <div class="portrait" id="portrait"><img src="assets/me.png" alt="Omar"></div>
-        Omar Amer Hashem Mohamed
+      <div class="brand-row">
+        <!-- small portrait in nav for flair (non-interactive) -->
+        <div style="width:44px;height:44px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,0.08)">
+          <img src="assets/me.png" alt="Omar" style="width:100%;height:100%;object-fit:cover;display:block"/>
+        </div>
+        <div>
+          <div class="brand-name">Omar Amer Hashem Mohamed</div>
+          <div style="font-size:12px;color:var(--muted)">Senior Full-Stack Developer — Open to Remote</div>
+        </div>
       </div>
-      <div class="links">
-        <a href="#home">Home</a><a href="#about">About</a><a href="#skills">Skills</a>
-        <a href="#projects">Projects</a><a href="#contact">Contact</a>
+
+      <div class="nav-links" aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
       </div>
     </nav>
 
     <!-- HERO -->
-    <section id="home" class="hero" data-aos="fade-down" data-aos-duration="1200" data-aos-easing="ease-in-out">
-      <div>
-        <span class="chip"><i class="fa-solid fa-circle fa-2xs" style="color:#2aff95"></i> Open to Remote Work</span>
-        <h1>Hi, I’m <span class="accent">Omar Amer</span></h1>
-        <p class="subtitle">Full-Stack Developer from <strong>Assiut, Egypt</strong>. I build fast, reliable products with clean UI & robust backends.</p>
-        <div class="hero-actions">
-          <a class="btn" href="#projects">View Projects</a>
-          <a class="btn whatsapp block" href="https://wa.me/201010063920" target="_blank">
-            <i class="fa-brands fa-whatsapp"></i> WhatsApp
-          </a>
-          <a class="btn certificate" href="assets/CV.pdf" target="_blank">
-            <i class="fa-solid fa-certificate"></i> Certificate
-          </a>
+    <section id="home" class="hero" data-aos="fade-up" data-aos-duration="900">
+      <div class="hero-left">
+        <div class="hero-row" style="justify-content:flex-start">
+          <div class="portrait-wrap" style="flex:0 0 auto">
+            <div class="portrait" id="mainPortrait" role="img" aria-label="Portrait of Omar Amer">
+              <img src="assets/me.png" alt="Portrait — Omar Amer">
+            </div>
+          </div>
+
+          <div style="min-width:0">
+            <div class="chip"><i class="fa-solid fa-circle" style="color:#2aff95;font-size:8px"></i> Open to Remote Work</div>
+            <h1>Hi, I’m <span class="accent">Omar Amer</span></h1>
+            <div class="subtitle">Senior Full-Stack Developer from <strong>Assiut, Egypt</strong>. I design and deliver robust, scalable web platforms with a focus on performance, security and delightful UX.</div>
+          </div>
+        </div>
+
+        <div class="hero-actions" aria-hidden="false">
+          <a class="btn primary" href="#projects"><i class="fa-solid fa-rocket"></i> View Projects</a>
+          <a class="btn ghost" href="assets/CV.pdf" target="_blank" rel="noopener"><i class="fa-regular fa-file-lines"></i> certificate</a>
+          <a class="btn whatsapp" href="https://wa.me/201010063920?text=Hi%20Omar%2C%20I%27m%20interested%20in%20your%20work" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Message on WhatsApp</a>
         </div>
       </div>
+
+      <!-- right column (kept empty visually on small screens; portrait shown in left) -->
+      <div class="hero-right" aria-hidden="true"></div>
     </section>
 
-    <!-- ABOUT -->
-    <section id="about" data-aos="fade-up" data-aos-duration="1200" data-aos-easing="ease-in-out">
+    <!-- ABOUT (senior, detailed) -->
+    <section id="about" data-aos="fade-up" data-aos-duration="900">
       <div class="card">
         <h2>About Me</h2>
-        <p>I’m <strong>Omar Amer Hashem Mohamed</strong>,a highly skilled Senior <strong>Full Stack Developer</strong>  deep expertise in designing and developing end-to-end web applications. With a strong foundation in <strong>HTML, CSS, JavaScript, PHP, MySQL, React</strong> and more.</p>
-        <p>I specialize in building scalable, secure, and high-performance systems that deliver exceptional user experiences.
+        <p><strong>I am Omar Amer Hashem Mohamed</strong>, a Senior Full-Stack Developer with a proven track record of leading and delivering production-grade web applications. I combine product-minded thinking with engineering rigor to turn complex requirements into maintainable, high-performance solutions.</p>
 
-Over the years, I have led projects from concept to deployment, working closely with cross-functional teams to ensure both frontend elegance and backend robustness. My approach combines clean, maintainable code with a keen eye for UI/UX detail, ensuring that products are both beautiful and reliable.
+        <p><strong>Technical expertise:</strong> Frontend architecture (HTML5, CSS3, modern JavaScript, React), server-side development (PHP, Node.js), relational databases (MySQL), RESTful APIs, authentication & authorization, caching strategies, and CI/CD pipelines (Vercel, GitHub Actions).</p>
 
-I am passionate about staying up-to-date with emerging technologies, applying best practices in security, and optimizing applications for speed and scalability. From building interactive dashboards to architecting database-driven platforms, I ensure every project meets industry standards and exceeds client expectations.
+        <p><strong>What I deliver:</strong> pixel-perfect interfaces, resilient backend services, measurable performance improvements, and secure deployments. I emphasize clean code, strong test coverage, and meaningful documentation so teams can scale confidently.</p>
 
-Currently, ready to contribute my skills to ambitious projects that demand innovation, precision, and results. <strong>Remote Work</strong> opportunities worldwide.</p>
+        <p><strong>Working style:</strong> I lead by example — mentor junior devs, collaborate with product & design to prioritize impact, and communicate in plain language with stakeholders. I’m comfortable working on greenfield platforms and stepping into legacy codebases to improve stability and velocity.</p>
+
+        <p><em>Available for remote roles and freelance projects. Let’s build something reliable and elegant together.</em></p>
       </div>
     </section>
 
     <!-- SKILLS -->
-    <section id="skills" data-aos="fade-up" data-aos-duration="1200" data-aos-easing="ease-in-out">
+    <section id="skills" data-aos="fade-up" data-aos-duration="900">
       <h2>Skills</h2>
-      <div class="skills">
+      <div class="skills" id="skillsList" aria-live="polite">
+        <!-- Core -->
         <div class="skill">🔶 HTML5</div>
-        <div class="skill">🎨 CSS3</div>
-        <div class="skill">⚡ JavaScript</div>
-        <div class="skill">⚛️ React</div>
-        <div class="skill">🐘 PHP</div>
-        <div class="skill">🗄️ MySQL</div>
-        <div class="skill">🚀 Vercel</div>
-        <div class="skill">📱 Responsive Design</div>
-        <div class="skill">🔐 Security Basics</div>
-        <div class="skill">🧰 Git & GitHub</div>
+        <div class="skill">🎨 CSS3 (Flexbox / Grid / Animations)</div>
+        <div class="skill">⚡ JavaScript (ES6+)</div>
+        <div class="skill">⚛️ React (hooks, state management)</div>
+        <div class="skill">🐘 PHP (Laravel basics)</div>
+        <div class="skill">🗄️ MySQL (design & optimization)</div>
+
+        <!-- Additional -->
+        <div class="skill">🧩 REST & GraphQL APIs</div>
+        <div class="skill">🚀 Vercel / CI-CD</div>
+        <div class="skill">🧰 Git & GitHub — PRs + Code Reviews</div>
+        <div class="skill">📦 NPM / Webpack / Tooling</div>
+        <div class="skill">🔐 Auth, JWT, OWASP basics</div>
+        <div class="skill">📱 Responsive & Mobile-first</div>
+        <div class="skill">⚙️ Performance tuning & caching</div>
+        <div class="skill">🧪 Unit & Integration Testing (Jest)</div>
+        <div class="skill">🧭 SEO fundamentals & Accessibility</div>
       </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section id="projects" data-aos="fade-up" data-aos-duration="1200" data-aos-easing="ease-in-out">
-      <h2>Projects</h2>
-      <div class="projects-list">
-        <div class="card" data-aos="zoom-in" data-aos-duration="1000">
-          <h3>Candy Store</h3>
-          <p>Simple e-commerce front showcasing layout, components and interactivity.</p>
-          <p><a href="https://candyy-store.vercel.app/" target="_blank">Visit Project</a></p>
-        </div>
-        <div class="card" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
-          <h3>Kanban Task Board</h3>
-          <p>Drag-n-drop columns, local persistence and keyboard shortcuts.</p>
-          <p><a href="#">View Project</a></p>
-        </div>
-      </div>
-    </section>
+<!-- PROJECTS -->
+<section id="projects" data-aos="fade-up" data-aos-duration="900">
+  <h2>Projects</h2>
+  <div class="projects-grid">
+    
+    <!-- Candy Store -->
+    <div class="project-card" onclick="window.open('https://candyy-store.vercel.app/', '_blank')" data-aos="zoom-in" data-aos-duration="700">
+      <h3>Candy Store</h3>
+      <p>Responsive e-commerce front demonstrating component design, product listing, cart interactions and performance optimizations.</p>
+    </div>
+
+    <!-- Restaurant Menu -->
+    <div class="project-card" onclick="window.open('https://omaramer16.github.io/restaurant-menu/', '_blank')" data-aos="zoom-in" data-aos-duration="700">
+      <h3>Restaurant Menu</h3>
+      <p>Restaurant-style menu website showcasing categories and responsive design for multiple dishes.</p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  /* Hover effect for project cards */
+  .project-card {
+    background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    cursor: pointer;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .project-card:hover {
+    transform: translateY(-6px) scale(1.03) rotate(1deg);
+    box-shadow: 0 14px 30px rgba(0,0,0,0.45);
+    animation: cardShake .4s ease;
+  }
+  @keyframes cardShake {
+    0% { transform: translateY(-6px) scale(1.03) rotate(0deg); }
+    25% { transform: translateY(-6px) scale(1.03) rotate(-1deg); }
+    50% { transform: translateY(-6px) scale(1.03) rotate(1deg); }
+    75% { transform: translateY(-6px) scale(1.03) rotate(-1deg); }
+    100% { transform: translateY(-6px) scale(1.03) rotate(0deg); }
+  }
+/* Tooltip-like hover for project card */
+  .project-card {
+    position: relative;
+  }
+  .project-card::after {
+    content: "Click to open project";
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    color: var(--accent);
+    opacity: 0;
+    transition: opacity .2s ease, transform .2s ease;
+    pointer-events: none;
+  }
+  .project-card:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-4px);
+  }
+
+
+</style>
+
+
 
     <!-- CONTACT -->
-    <section id="contact" data-aos="fade-up" data-aos-duration="1200" data-aos-easing="ease-in-out">
+    <section id="contact" data-aos="fade-up" data-aos-duration="900">
       <h2>Contact</h2>
-      <div class="contact-grid">
+
+      <div class="contact-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
         <div class="card">
-          <p><i class="fa-solid fa-envelope"></i> <a href="mailto:oamer4778@gmail.com">oamer4778@gmail.com</a></p>
-          <p><i class="fa-solid fa-phone"></i> <a href="tel:+201010063920">+20 1010063920</a></p>
-          <p><i class="fa-solid fa-location-dot"></i> Assiut, Egypt</p>
+          <p><strong>Email:</strong> <a href="mailto:oamer4778@gmail.com">oamer4778@gmail.com</a></p>
+          <p><strong>Phone:</strong> <a href="tel:+201010063920">+20 1010063920</a></p>
+          <p><strong>Location:</strong> Assiut, Egypt (Open to Remote)</p>
+          <div style="margin-top:12px">
+            <a class="btn ghost" href="assets/CV.pdf" target="_blank" rel="noopener"><i class="fa-regular fa-file-lines"></i>  certificate</a>
+          </div>
         </div>
+
         <div class="card">
-          <h3>Social Profiles</h3>
-          <div class="socials">
-            <a class="fb" href="https://www.facebook.com/omer.amer.81145" target="_blank"><i class="fa-brands fa-facebook-f ico"></i></a>
-            <a class="wa" href="https://wa.me/201010063920" target="_blank"><i class="fa-brands fa-whatsapp ico"></i></a>
-            <a class="ig" href="https://www.instagram.com/omar_amer95/" target="_blank"><i class="fa-brands fa-instagram ico"></i></a>
-            <a class="ig" href="https://www.instagram.com/eng_omar_amer20/" target="_blank"><i class="fa-brands fa-instagram ico"></i></a>
-            <a class="in" href="https://www.linkedin.com/in/omer-amer-1b8624334" target="_blank"><i class="fa-brands fa-linkedin-in ico"></i></a>
-            <a class="gh" href="https://github.com/omaramer16" target="_blank"><i class="fa-brands fa-github ico"></i></a>
-            <a class="vercel" href="https://vercel.com/omar-amers-projects" target="_blank"><svg class="ico" width="22" height="22" viewBox="0 0 24 24"><path d="M12 3l10 18H2z" fill="#000"/></svg></a>
+          <h3 style="margin-top:0">Social Profiles</h3>
+          <div class="socials" id="socials">
+            <a class="soc-fb" href="https://www.facebook.com/omer.amer.81145" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f ico"></i> Facebook</a>
+            <a class="soc-ig" href="https://www.instagram.com/omar_amer95/" target="_blank" title="Instagram #1"><i class="fa-brands fa-instagram ico"></i> Instagram #1</a>
+            <a class="soc-ig" href="https://www.instagram.com/eng_omar_amer20/" target="_blank" title="Instagram #2"><i class="fa-brands fa-instagram ico"></i> Instagram #2</a>
+            <a class="soc-in" href="https://www.linkedin.com/in/omer-amer-1b8624334" target="_blank" title="LinkedIn"><i class="fa-brands fa-linkedin-in ico"></i> LinkedIn</a>
+            <a class="soc-gh" href="https://github.com/omaramer16" target="_blank" title="GitHub"><i class="fa-brands fa-github ico"></i> GitHub</a>
+            <a class="soc-wa" href="https://wa.me/201010063920" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp ico"></i> WhatsApp</a>
+            <a class="soc-vercel" href="https://vercel.com/omar-amers-projects" target="_blank" title="Vercel"><svg class="ico" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l10 18H2z" fill="#000"/></svg> Vercel</a>
           </div>
         </div>
       </div>
     </section>
 
-    <footer>© <span id="year"></span> Omar Amer Hashem Mohamed</footer>
+    <footer style="margin-top:28px;color:var(--muted);text-align:center">
+      © <span id="year"></span> Omar Amer Hashem Mohamed — Built with care.
+    </footer>
   </div>
 
-  <!-- Scripts -->
+  <!-- AOS + JS -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
+    AOS.init({duration:900, once:true, offset:120, easing:'ease-out-back'});
+
+    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    AOS.init({
-      once: true,
-      offset: 120,
-      duration: 1000,
-      easing: 'ease-in-out',
-    });
+    // Portrait Parallax: full 2D movement + scale on hover
+    (function(){
+      const portrait = document.getElementById('mainPortrait');
+      if(!portrait) return;
+      let rect = null;
+      let isPointerDown = false;
 
-    // Portrait Parallax + Zoom
-    const portrait = document.getElementById('portrait');
-    let rect;
-    portrait.addEventListener('mousemove', e => {
-      if(!rect) rect = portrait.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - .5;
-      const y = (e.clientY - rect.top) / rect.height - .5;
-      portrait.style.transform = `rotateX(${y * -10}deg) rotateY(${x * 10}deg) scale(1.05)`;
-    });
-    portrait.addEventListener('mouseleave', () => {
-      portrait.style.transform = 'rotateX(0) rotateY(0) scale(1)';
-      rect = null;
-    });
+      function onMove(clientX, clientY){
+        if(!rect) rect = portrait.getBoundingClientRect();
+        const rx = (clientX - rect.left) / rect.width - 0.5; // -0.5..0.5
+        const ry = (clientY - rect.top) / rect.height - 0.5;
+        const rotX = ry * -14; // tilt up/down
+        const rotY = rx * 14;  // tilt left/right
+        const transX = rx * 12; // translate left/right
+        const transY = ry * 12; // translate up/down
+        portrait.style.transform = `translate3d(${transX}px, ${transY}px, 0) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.06)`;
+        portrait.style.boxShadow = `${-transX}px ${18+Math.abs(transY)}px 40px rgba(0,0,0,0.5)`;
+      }
+
+      function reset(){
+        portrait.style.transform = 'translate3d(0,0,0) rotateX(0) rotateY(0) scale(1)';
+        portrait.style.boxShadow = '0 18px 40px rgba(10,12,20,0.55)';
+        rect = null;
+      }
+
+      // mouse
+      portrait.addEventListener('mousemove', e => onMove(e.clientX, e.clientY));
+      portrait.addEventListener('mouseleave', reset);
+
+      // touch support: parallax follows touch move inside portrait
+      portrait.addEventListener('touchstart', e => {
+        rect = portrait.getBoundingClientRect();
+        if (e.touches && e.touches[0]) {
+          onMove(e.touches[0].clientX, e.touches[0].clientY);
+        }
+      }, {passive:true});
+      portrait.addEventListener('touchmove', e => {
+        if (e.touches && e.touches[0]) {
+          onMove(e.touches[0].clientX, e.touches[0].clientY);
+        }
+      }, {passive:true});
+      portrait.addEventListener('touchend', reset);
+
+      // keyboard accessibility: arrow keys nudge the portrait slightly
+      portrait.setAttribute('tabindex','0');
+      portrait.addEventListener('focus', ()=> portrait.style.outline = '2px solid rgba(255,255,255,0.06)');
+      portrait.addEventListener('blur', ()=> portrait.style.outline = 'none');
+      let keyX = 0, keyY = 0;
+      portrait.addEventListener('keydown', (e) => {
+        const step = 6;
+        if(e.key === 'ArrowLeft') keyX = Math.max(keyX - step, -30);
+        if(e.key === 'ArrowRight') keyX = Math.min(keyX + step, 30);
+        if(e.key === 'ArrowUp') keyY = Math.max(keyY - step, -30);
+        if(e.key === 'ArrowDown') keyY = Math.min(keyY + step, 30);
+        portrait.style.transform = `translate3d(${keyX}px, ${keyY}px, 0) rotateX(${keyY * -0.4}deg) rotateY(${keyX * 0.4}deg) scale(1.04)`;
+        // small timeout to reset keys
+        clearTimeout(portrait._kt);
+        portrait._kt = setTimeout(()=> { keyX = 0; keyY = 0; portrait.style.transform='translate3d(0,0,0) rotateX(0) rotateY(0) scale(1)'; }, 600);
+      });
+    })();
+
+    // Colored glow for socials: compute and apply colored shadow using element color
+    (function(){
+      const socials = document.querySelectorAll('#socials a, .socials a');
+      socials.forEach(el=>{
+        el.addEventListener('mouseenter', ()=>{
+          // get computed color
+          const c = getComputedStyle(el).color;
+          // subtle glow with that color
+          el.style.boxShadow = `0 8px 30px ${c}, 0 0 18px ${c}`;
+          // small shake
+          el.style.animation = 'tinyShake .45s ease';
+          setTimeout(()=> el.style.animation = '', 460);
+        });
+        el.addEventListener('mouseleave', ()=>{
+          el.style.boxShadow = '';
+        });
+      });
+    })();
+
+    // Small IntersectionObserver for skills reveal (staggered)
+    (function(){
+      const skills = document.querySelectorAll('#skillsList .skill');
+      if(!skills.length) return;
+      skills.forEach((s,i)=>{
+        s.style.opacity = 0; s.style.transform = 'translateY(12px)';
+        s.style.transition = `opacity .6s ease ${i*60}ms, transform .6s cubic-bezier(.2,.8,.2,1) ${i*60}ms`;
+      });
+      const io = new IntersectionObserver((entries, ob) => {
+        entries.forEach(en=>{
+          if(en.isIntersecting){
+            skills.forEach(s=> { s.style.opacity = 1; s.style.transform = 'translateY(0)'; });
+            ob.disconnect();
+          }
+        });
+      }, {threshold:0.15});
+      io.observe(document.querySelector('#skillsList'));
+    })();
+
+    // Focus styles for accessibility on links (Enter triggers hover-like box-shadow)
+    (function(){
+      document.querySelectorAll('a, button').forEach(el=>{
+        el.addEventListener('focus', ()=> el.style.boxShadow = '0 10px 30px rgba(0,0,0,0.35)');
+        el.addEventListener('blur', ()=> el.style.boxShadow = '');
+      });
+    })();
   </script>
+
+  <noscript>
+    <style>[data-aos]{opacity:1 !important;transform:none !important}</style>
+  </noscript>
 </body>
 </html>
